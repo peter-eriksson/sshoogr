@@ -127,6 +127,11 @@ class ExecMethods {
     channel.outputStream = output
     channel.extOutputStream = output
     channel.setPty(options.usePty)
+	if (options.env) {
+		options.env.each() { String key, String value ->
+			channel.setEnv(key, value)
+		}
+	}
     channel.connect()
     new ChannelData(channel: channel, output: savedOutput)
   }

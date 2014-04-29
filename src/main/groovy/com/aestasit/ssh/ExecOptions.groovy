@@ -37,6 +37,8 @@ class ExecOptions extends CommonOptions {
   String suffix            = null
   def escapeCharacters     = null
 
+  Map<String,String> env   = null
+
   ExecOptions() {
   }
 
@@ -51,7 +53,8 @@ class ExecOptions extends CommonOptions {
     this.usePty              = setValue(opt1?.usePty, true)
     this.prefix              = setValue(opt1?.prefix, null)
     this.suffix              = setValue(opt1?.suffix, null)
-    this.escapeCharacters    = setValue(opt1?.escapeCharacters, null)    
+    this.escapeCharacters    = setValue(opt1?.escapeCharacters, null)
+	this.env                 = setValue(opt1?.env, null)
   }
 
   ExecOptions(ExecOptions opt1, ExecOptions opt2) {
@@ -70,6 +73,7 @@ class ExecOptions extends CommonOptions {
     this.prefix              = setValue(opt2?.prefix, opt1?.prefix, null)
     this.suffix              = setValue(opt2?.suffix, opt1?.suffix, null)
     this.escapeCharacters    = setValue(opt2?.escapeCharacters, opt1?.escapeCharacters, null)
+	this.env                 = setValue(opt2?.env, opt1?.env, null)
   }
 
 }
